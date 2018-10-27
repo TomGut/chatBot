@@ -167,12 +167,13 @@ app.post('/webhook', (req, res) => {
               // You can customize your response to these entities
                 
                 const purchase = entities.price[0].value;
+                const greeting = entities.Greets[0].value;
                 
                 if(purchase)
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
-                if(Greeting)
+                if(greeting)
                 {
                     fbMessage(sender, `chcesz się przywitać`);
                 }
