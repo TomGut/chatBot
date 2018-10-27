@@ -125,7 +125,7 @@ app.use(bodyParser.json({ verify: verifyRequestSignature }));
 //Serwer setup
 app.get('/', (req, res) => {
     res.send("DEPLOYED");
-}
+});
 
 // Webhook setup
 app.get('/webhook', (req, res) => {
