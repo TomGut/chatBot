@@ -166,29 +166,13 @@ app.post('/webhook', (req, res) => {
             wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
                 
-                const firstEntityValue = (entities, entity) => {
-  const val = entities && entities[entity] &&
-    Array.isArray(entities[entity]) &&
-    entities[entity].length > 0 &&
-    entities[entity][0].value
-  ;
-  if (!val) {
-    return null;
-  }
-  return typeof val === 'object' ? val.value : val;
-};
+                const ent = entities[0].value;
                 
-  const greetings = firstEntityValue(entities, 'greets');
-  const purchase = firstEntityValue(entities, 'price');
-
- if (greetings) {
-    fbMessage(sender, `Chcesz się przywitać.`);
-  } else if (price) {
-   fbMessage(sender, `Chcesz kupić.`);
-  } else {
-    fbMessage(sender, `Powiedz inaczej.`);
-  }
-};
+                if(ent === greets)
+                {
+                    fbMessage(sender, `chcesz się przywitać`);
+                }
+               
                 
               console.log(entities);
               
