@@ -173,6 +173,10 @@ app.post('/webhook', (req, res) => {
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
+                 if(intent === "greeting")
+                {
+                    fbMessage(sender, `chcesz się przywitać`);
+                }
                // For now, let's reply with another automatic message
                   //fbMessage(sender, `We've received your message: ${text}.`);
                   fbMessage(sender, string);
