@@ -172,6 +172,10 @@ app.post('/webhook', (req, res) => {
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
+                if(Greeting)
+                {
+                    fbMessage(sender, `chcesz się przywitać`);
+                }
                 else
                   {// For now, let's reply with another automatic message
                   fbMessage(sender, `We've received your message: ${text}.`);
@@ -183,6 +187,7 @@ app.post('/webhook', (req, res) => {
             })
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
+                fbMessage(sender, `Przepraszam nie zrozumiałem, czy możesz ująć to inaczej ?`);
             })
           }
         } else {
