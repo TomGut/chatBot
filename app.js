@@ -165,9 +165,18 @@ app.post('/webhook', (req, res) => {
             // Let's run /message on the text to extract some entities
             wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
+                
+                if(entities === 'purchase')
+                {
+                    fbMessage(sender, `chcesz dokonać zakupu`);
+                }
+                
               console.log(entities);
-              // For now, let's reply with another automatic message
+              else
+              {// For now, let's reply with another automatic message
               fbMessage(sender, `We've received your message: ${text}.`);
+              }
+                
             })
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
