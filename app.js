@@ -173,10 +173,9 @@ app.post('/webhook', (req, res) => {
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
-                if(!purchase)
-                  {// For now, let's reply with another automatic message
+               // For now, let's reply with another automatic message
                   fbMessage(sender, `We've received your message: ${text}.`);
-                  }
+                
                 
               console.log(entities);
               
