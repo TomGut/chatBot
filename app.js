@@ -166,16 +166,11 @@ app.post('/webhook', (req, res) => {
             wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
                 
-                const purchase = entities.purchase[0].value;
-                const greeting = entities.greeting[0].value;
+                const purchase = entities.price[0].value;
                 
                 if(purchase)
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
-                }
-                if(greeting)
-                {
-                    fbMessage(sender, `chcesz się przywitać`);
                 }
                 else
                   {// For now, let's reply with another automatic message
@@ -188,7 +183,6 @@ app.post('/webhook', (req, res) => {
             })
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
-                fbMessage(sender, `Przepraszam nie zrozumiałem, czy możesz ująć to inaczej ?`);
             })
           }
         } else {
