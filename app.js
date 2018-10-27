@@ -172,14 +172,13 @@ app.post('/webhook', (req, res) => {
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
-                else
-                  {// For now, let's reply with another automatic message
-                  fbMessage(sender, `We've received your message: ${text}.`);
-                  }
+               // For now, let's reply with another automatic message
+                  //fbMessage(sender, `We've received your message: ${text}.`);
+                  fbMessage(sender, entities);
+        
                 
               console.log(entities);
               
-                
             })
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
