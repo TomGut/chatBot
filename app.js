@@ -166,8 +166,8 @@ app.post('/webhook', (req, res) => {
             wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
                 
-                const purchase = entities.price[0].value;
-                const greeting = entities.Greets[0].value;
+                const purchase = entities.purchase[0].value;
+                const greeting = entities.greeting[0].value;
                 
                 if(purchase)
                 {
