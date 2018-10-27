@@ -166,17 +166,13 @@ app.post('/webhook', (req, res) => {
             wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
                 
-                const purchase = entities.price[0].value;
-               
+                const greeting = entities.greets[0].value;
                 
-                if(purchase)
+                if(greeting)
                 {
-                    fbMessage(sender, `chcesz dokonać zakupu`);
-                }else
-                    {
-               // For now, let's reply with another automatic message
-                  fbMessage(sender, `Przepraszam ale nie zrozumiałem - czy możesz to ująć inaczej ?`);
-                  }
+                    fbMessage(sender, `chcesz się przywitać`);
+                }
+               
                 
               console.log(entities);
               
