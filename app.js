@@ -166,7 +166,7 @@ app.post('/webhook', (req, res) => {
             wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
                 
-                if(entities === 'purchase')
+                if(entities === 'price')
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
