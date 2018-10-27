@@ -167,6 +167,7 @@ app.post('/webhook', (req, res) => {
               // You can customize your response to these entities
                 
                 const purchase = entities.price[0].value;
+                let string = JSON.stringify(entities)
                 
                 if(purchase)
                 {
@@ -174,7 +175,7 @@ app.post('/webhook', (req, res) => {
                 }
                // For now, let's reply with another automatic message
                   //fbMessage(sender, `We've received your message: ${text}.`);
-                  fbMessage(sender, entities);
+                  fbMessage(sender, string);
         
                 
               console.log(entities);
