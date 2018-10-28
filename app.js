@@ -167,6 +167,7 @@ app.post('/webhook', (req, res) => {
               // You can customize your response to these entities
                 
                 const intent = entities.intent[0].value;
+                const entity = entities.entity[0].value;
                 
                 switch(intent) {
                     case "purchase":
@@ -185,6 +186,11 @@ app.post('/webhook', (req, res) => {
                     default: // Any other intensions go here..
                       sendTextMessage(sender, "Przepraszam ale nie rozumiem - możesz to ująć inaczej ?")
                       break;
+                }
+                
+                if(entity)
+                {
+                    fbMessage(sender, `Przepraszam ale nie rozumiem - możesz to ująć inaczej ?`);
                 }
                 
                // For now, let's reply with another automatic message
