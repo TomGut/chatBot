@@ -168,7 +168,7 @@ app.post('/webhook', (req, res) => {
                 
                 const intent = entities.intent[0].value;
                 
-                if(intent === "purchase" && intent === "greeting")
+                if(intent === "purchase")
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
@@ -180,10 +180,8 @@ app.post('/webhook', (req, res) => {
                 {
                     fbMessage(sender, `chcesz się pożegnać`);
                 }
-                else
-                {
-                    fbMessage(sender, `Nie rozumiem, czy możesz ująć to inaczej ?`);
-                }
+                if(intent !="purchase" || intent !="greeting" || intent !="goodbye")
+                
                // For now, let's reply with another automatic message
                   //fbMessage(sender, `We've received your message: ${text}.`);
         
