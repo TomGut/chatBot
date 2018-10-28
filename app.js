@@ -167,19 +167,25 @@ app.post('/webhook', (req, res) => {
               // You can customize your response to these entities
                 
                 const intent = entities.intent[0].value;
-                let string = JSON.stringify(entities)
                 
                 if(intent === "purchase")
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
-                 if(intent === "greeting")
+                if(intent === "greeting")
                 {
                     fbMessage(sender, `chcesz się przywitać`);
                 }
+                if(intent === "goodbye")
+                {
+                    fbMessage(sender, `chcesz się pożegnać`);
+                }
+                else
+                {
+                    fbMessage(sender, `Nie rozumiem, czy możesz ująć to inaczej ?`);
+                }
                // For now, let's reply with another automatic message
                   //fbMessage(sender, `We've received your message: ${text}.`);
-                  fbMessage(sender, string);
         
                 
               console.log(entities);
