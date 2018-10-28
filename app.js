@@ -170,28 +170,28 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      fbMessage(sender, `Witam Cię, jestem chatbotem i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
+                      fbMessage(sender, `Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
                       fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
                       break;
                     case "book_get_price":
-                      fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF`);
+                      fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "drawing_get_price":
-                      fbMessage(sender, `Kurs kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy) i kończy się certyfikatami w 4 językach (PL, EN, DE i NO)`);
+                      fbMessage(sender, `Kurs kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy) i kończy się certyfikatami w 4 językach (PL, EN, DE i NO) - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "hotWork_get_price":
                       fbMessage(sender, `Kurs elearnigowy (na komputerze kupującego) kosztuje 1000 PLN, trwa około 3 godzin i kończy się certyfikatem Norweskim`);
                       break;
                     case "drawing_get_date":
-                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949`);
+                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
                     case "hotWork_get_date":
-                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949`);
+                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
                     case "offer":
-                      fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. /n/ Czy jest coś co Ciebie by interesowało ?`);
+                      fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. Jeżeli interesuje Cię coś konkretnego to śmialo pytaj o datę/ cenę :)`);
                       break;
                     case "question":
                       fbMessage(sender, `Jasne w czym mogę pomóc ?`);
@@ -200,16 +200,16 @@ app.post('/webhook', (req, res) => {
                       fbMessage(sender, `Cieszę się z Tobą :)`);
                       break;
                     case "confirm":
-                      fbMessage(sender, `Ok`);
+                      fbMessage(sender, `Ok - co robimy dalej ?`);
                       break;
                     case "negation":
-                      fbMessage(sender, `Zaprzeczenie`);
+                      fbMessage(sender, `Ok w takim razie co mogę jeszcze dla Ciebie zrobić ?`);
                       break;
                     case "outh":
                       fbMessage(sender, `Przepraszam ale nie rozumiem - możesz to ująć inaczej ?`);
                       break;
                     case "swear":
-                      fbMessage(sender, `Proszę nie używaj takich słów`);
+                      fbMessage(sender, `Proszę nie używaj takich słów... powiedz lepiej w czym mogę Ci jeszcze pomóc ?`);
                       break;
                         
                     default: // Any other intensions go here..
