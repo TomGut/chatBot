@@ -178,14 +178,20 @@ app.post('/webhook', (req, res) => {
                     case "goodbye":
                       fbMessage(sender, `chcesz się pożegnać`);
                       break;
+                    case "happy":
+                      fbMessage(sender, `Cieszę się z Tobą :)`);
+                      break;
+                    case "confirm":
+                      fbMessage(sender, `Potwierdzenie`);
+                      break;
+                    case "negation":
+                      fbMessage(sender, `Zaprzeczenie`);
+                      break;
                     case "outh":
                       fbMessage(sender, `Przepraszam ale nie rozumiem - możesz to ująć inaczej ?`);
                       break;
                     case "swear":
                       fbMessage(sender, `Proszę nie używaj takich słów`);
-                      break;
-                    case "happy":
-                      fbMessage(sender, `Cieszę się z Tobą :)`);
                       break;
                         
                     default: // Any other intensions go here..
