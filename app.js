@@ -175,8 +175,17 @@ app.post('/webhook', (req, res) => {
                     case "goodbye":
                       fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
                       break;
-                    case "purchase":
-                      fbMessage(sender, `Jak rozumiem chcesz kupić książkę o rysunku izometrycznym ?`);
+                    case "book_get_price":
+                      fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF`);
+                      break;
+                    case "drawing_get_price":
+                      fbMessage(sender, `Kurs kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy) i kończy się certyfikatami w 4 językach (PL, EN, DE i NO)`);
+                      break;
+                    case "hotWork_get_price":
+                      fbMessage(sender, `Kurs elearnigowy (na komputerze kupującego) kosztuje 1000 PLN, trwa około 3 godzin i kończy się certyfikatem Norweskim`);
+                      break;
+                    case "offer":
+                      fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. /n/ Czy jest coś co Ciebie by interesowało ?`);
                       break;
                     case "question":
                       fbMessage(sender, `Jasne w czym mogę pomóc ?`);
