@@ -184,6 +184,12 @@ app.post('/webhook', (req, res) => {
                     case "hotWork_get_price":
                       fbMessage(sender, `Kurs elearnigowy (na komputerze kupującego) kosztuje 1000 PLN, trwa około 3 godzin i kończy się certyfikatem Norweskim`);
                       break;
+                    case "drawing_get_date":
+                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949`);
+                      break;
+                    case "hotWork_get_date":
+                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949`);
+                      break;
                     case "offer":
                       fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. /n/ Czy jest coś co Ciebie by interesowało ?`);
                       break;
