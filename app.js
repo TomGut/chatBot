@@ -168,19 +168,22 @@ app.post('/webhook', (req, res) => {
                 
                 const intent = entities.intent[0].value;
                 
-                if(intent === "purchase")
-                {
-                    fbMessage(sender, `chcesz dokonać zakupu`);
+                switch(intent) {
+                    case "purchase":
+                      fbMessage(sender, `chcesz dokonać zakupu`);
+                      break;
+                    case "greeting":
+                      fbMessage(sender, `chcesz się przywitać`);
+                      break;
+                    case "goodbye":
+                      fbMessage(sender, `chcesz się pożegnać`);
+                      break;
+                        
+                    default: // Any other intensions go here..
+                      sendTextMessage(sender, "Przepraszam ale nie rozumiem - możesz to ująć inaczej ?")
+                      break;
                 }
-                if(intent === "greeting")
-                {
-                    fbMessage(sender, `chcesz się przywitać`);
-                }
-                if(intent === "goodbye")
-                {
-                    fbMessage(sender, `chcesz się pożegnać`);
-                }
-             
+                
                // For now, let's reply with another automatic message
                   //fbMessage(sender, `We've received your message: ${text}.`);
         
