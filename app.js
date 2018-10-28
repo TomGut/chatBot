@@ -193,6 +193,9 @@ app.post('/webhook', (req, res) => {
                     case "hotWork_get_price":
                       fbMessage(sender, `Kurs elearnigowy (na komputerze kupującego) kosztuje 1000 PLN, trwa około 3 godzin i kończy się certyfikatem Norweskim`);
                       break;
+                    case "book_get_ebook":
+                      fbMessage(sender, `tak kiążka jest w formacie Ebooka, PDF i jest wysyłana mailowo - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
+                      break;
                     case "drawing_get_date":
                       fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
