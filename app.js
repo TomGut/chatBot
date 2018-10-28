@@ -188,9 +188,14 @@ app.post('/webhook', (req, res) => {
                       break;
                 }
                 
-                if(entity)
-                {
-                    fbMessage(sender, `Przepraszam ale nie rozumiem - możesz to ująć inaczej ?`);
+                switch(entity) {
+                    case "outhscope":
+                      fbMessage(sender, "Przepraszam ale nie rozumiem - możesz to ująć inaczej ?");
+                      break;
+                    
+                    default: // Any other intensions go here..
+                      sendTextMessage(sender, "Przepraszam ale nie rozumiem - możesz to ująć inaczej ?")
+                      break;
                 }
                 
                // For now, let's reply with another automatic message
