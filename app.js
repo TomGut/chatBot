@@ -175,6 +175,15 @@ app.post('/webhook', (req, res) => {
                     case "goodbye":
                       fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
                       break;
+                    case "question":
+                      fbMessage(sender, `Jasne w czym mogę pomóc ?`);
+                      break;
+                    case "thanks":
+                      fbMessage(sender, `Nie ma problemu, cieszę się, że mogłem pomóc :)`);
+                      break;
+                    case "happy":
+                      fbMessage(sender, `Cieszę się z Tobą :)`);
+                      break;
                     case "book_get_price":
                       fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
@@ -192,12 +201,6 @@ app.post('/webhook', (req, res) => {
                       break;
                     case "offer":
                       fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. Jeżeli interesuje Cię coś konkretnego to śmialo pytaj o datę/ cenę :)`);
-                      break;
-                    case "question":
-                      fbMessage(sender, `Jasne w czym mogę pomóc ?`);
-                      break;
-                    case "happy":
-                      fbMessage(sender, `Cieszę się z Tobą :)`);
                       break;
                     case "confirm":
                       fbMessage(sender, `Ok - co robimy dalej ?`);
