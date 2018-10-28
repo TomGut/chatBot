@@ -169,20 +169,20 @@ app.post('/webhook', (req, res) => {
                 const intent = entities.intent[0].value;
                 
                 switch(intent) {
-                    case "purchase":
-                      fbMessage(sender, `chcesz dokonać zakupu`);
-                      break;
                     case "greeting":
-                      fbMessage(sender, `chcesz się przywitać`);
+                      fbMessage(sender, `Witam Cię, jestem chatbotem i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
-                      fbMessage(sender, `chcesz się pożegnać`);
+                      fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
+                      break;
+                    case "purchase":
+                      fbMessage(sender, `Jak rozumiem chcesz kupić książkę o rysunku izometrycznym ?`);
                       break;
                     case "happy":
                       fbMessage(sender, `Cieszę się z Tobą :)`);
                       break;
                     case "confirm":
-                      fbMessage(sender, `Potwierdzenie`);
+                      fbMessage(sender, `Ok`);
                       break;
                     case "negation":
                       fbMessage(sender, `Zaprzeczenie`);
