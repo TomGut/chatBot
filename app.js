@@ -181,6 +181,9 @@ app.post('/webhook', (req, res) => {
                     case "outh":
                       fbMessage(sender, `Przepraszam ale nie rozumiem - możesz to ująć inaczej ?`);
                       break;
+                    case "swear":
+                      fbMessage(sender, `Proszę nie używaj takich słów`);
+                      break;
                         
                     default: // Any other intensions go here..
                       sendTextMessage(sender, "Przepraszam ale nie rozumiem - możesz to ująć inaczej ?")
