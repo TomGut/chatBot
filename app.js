@@ -178,6 +178,9 @@ app.post('/webhook', (req, res) => {
                     case "purchase":
                       fbMessage(sender, `Jak rozumiem chcesz kupić książkę o rysunku izometrycznym ?`);
                       break;
+                    case "question":
+                      fbMessage(sender, `Jasne w czym mogę pomóc ?`);
+                      break;
                     case "happy":
                       fbMessage(sender, `Cieszę się z Tobą :)`);
                       break;
