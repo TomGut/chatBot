@@ -32,10 +32,10 @@ let log = null;
 const PORT = process.env.PORT || 8445;
 
 // Wit.ai parameters
-const WIT_TOKEN = process.env.WIT_TOKEN || 'QOJWQS5CMLZFRWFEFZCGHXUDTAQXYALE';
+const WIT_TOKEN = process.env.WIT_TOKEN || 'R5V774BP5QAS4R37T6NLS3H4SKUP4NOT';
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || 'EAAZA0ufyLoHQBAEuh3ZCaHggfTKvq8p2ZBVrGR1eX26G0h6E89QigP9opHYuRWQq7i5XDDXtmDiT9jnXNX64R16N0BSX3kAnrCbC5XomHHRZCtNTsmkrkBTDzk6gsU85t7QHMZBZAw2r1cN1fmiBC9hsUeX6ZBqZArTNEupDk2UZCdvpJEv81zk9ZA';
+const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || 'EAAZA0ufyLoHQBADkuss9Gy5cfMV4SsyGQjskl1iO6VYPoiQhRs8a0JGUgSkgiO9HvshjrOR8qrdQJybnIymHG3gmIcsDMVuNsAAwUASVB27ZAFIHQZCIQubbDyOEmKoB4YDkOWGv3PKAPsM0YRIykJqUGDxgGNW7VgHJBb84XV63mIqzT81';
 
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
 
@@ -177,6 +177,9 @@ app.post('/webhook', (req, res) => {
                       break;
                     case "goodbye":
                       fbMessage(sender, `chcesz się pożegnać`);
+                      break;
+                    case "outh":
+                      fbMessage(sender, `Przepraszam ale nie rozumiem - możesz to ująć inaczej ?`);
                       break;
                         
                     default: // Any other intensions go here..
