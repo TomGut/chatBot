@@ -168,7 +168,7 @@ app.post('/webhook', (req, res) => {
                 
                 const intent = entities.intent[0].value;
                 
-                if(intent === "purchase")
+                if(intent === "purchase" && intent === "greeting")
                 {
                     fbMessage(sender, `chcesz dokonać zakupu`);
                 }
