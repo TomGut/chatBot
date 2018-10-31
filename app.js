@@ -170,7 +170,7 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      fbMessage(sender, `Witam Cię ` + sender.From.Name + ` , jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
+                      fbMessage(sender, `Witam Cię ` + sender.Name + ` , jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
                       fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
