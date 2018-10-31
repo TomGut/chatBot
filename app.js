@@ -147,6 +147,7 @@ app.post('/webhook', (req, res) => {
           // Yay! We got a new message!
           // We retrieve the Facebook user ID of the sender
           const sender = event.sender.id;
+          const senderName = event.sender.name;
 
           // We could retrieve the user's current session, or create one if it doesn't exist
           // This is useful if we want our bot to figure out the conversation history
@@ -170,7 +171,7 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      fbMessage(sender, `Witam Cię ` + sender.Name + ` , jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
+                      fbMessage(sender, `Witam Cię ` + senderName + ` , jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
                       fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
