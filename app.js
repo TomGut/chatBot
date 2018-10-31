@@ -170,40 +170,46 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      fbMessage(sender, `Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
+                      fbMessage(sender, `Witam Cię` + sender + ` , jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
                       fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
                       break;
                     case "question":
-                      fbMessage(sender, `Jasne w czym mogę pomóc ?`);
+                      fbMessage(sender, `Oczywiście, w czym mogę pomóc ?`);
+                      break;
+                    case "whats_up":
+                      fbMessage(sender, `W porządku dzięki :) Co mogę dla Ciebie zrobić ?`);
                       break;
                     case "thanks":
                       fbMessage(sender, `Nie ma problemu, cieszę się, że mogłem pomóc :)`);
+                      break;
+                    case "contacted":
+                      fbMessage(sender, `Możesz się z nami skontaktować w godzinach od 8 do 16 pod nr tel. 516 141 949 lub mailowo kontakt@etechnika.com.pl .Sporo informacj znajdziesz też na naszej stronie w strefie kursów: https://www.etechnika.com.pl/SZKOLENIA_I_USLUGI `);
                       break;
                     case "happy":
                       fbMessage(sender, `Cieszę się z Tobą :)`);
                       break;
                     case "book_get_price":
-                      fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF. Szczegóły o książce znajdziesz na naszej stronie pod tym linkiem: https://www.etechnika.com.pl/ksiazka-rysunek-izometryczny . Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "drawing_get_price":
-                      fbMessage(sender, `Kurs kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy) i kończy się certyfikatami w 4 językach (PL, EN, DE i NO) - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `Kurs rysunku izometrycznego kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy). Kurs rysunku izometrycznego organizujemy stacjonarnie w Gdańsku lub Gdyni - zależnie od liczebności grupy. Kurs kończy się certyfikatami w 4 językach (PL, EN, DE i NO). Szerszy opis znajdziesz na naszej stronie, pod tym linkiem: https://www.etechnika.com.pl/Rysunek_Izometryczny_Stacjonarny_2 . Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "hotWork_get_price":
-                      fbMessage(sender, `Kurs elearnigowy (na komputerze kupującego) kosztuje 1000 PLN, trwa około 3 godzin i kończy się certyfikatem Norweskim`);
+                      fbMessage(sender, `Kurs Hot Work, elearnigowy (na komputerze kupującego), kosztuje 1000 PLN, trwa około 3 godzin i kończy się certyfikatem Norweskim. Więcej informacji znajdziesz na naszej stronie pod tym linkiem: https://www.etechnika.com.pl/Hot_Work_elearning`);
                       break;
                     case "book_get_ebook":
-                      fbMessage(sender, `tak kiążka jest w formacie Ebooka, PDF i jest wysyłana mailowo - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `Książka jest w formacie Ebooka (PDF), wysyłamy ją emailowo - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "drawing_get_date":
-                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `W celu ustalenia dat kursu z rydunku izometrycznego, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
                     case "hotWork_get_date":
-                      fbMessage(sender, `W celu ustalenia dat proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `W celu ustalenia dat kursu Hot Work, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
                     case "offer":
-                      fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. Jeżeli interesuje Cię coś konkretnego to śmialo pytaj o datę/ cenę :)`);
+                      fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. Jeżeli interesuje Cię coś konkretnego to śmialo pytaj o datę/ cenę :). Dodatkowe informacje znajdziesz w cenniku na naszej stronie: https://www.etechnika.com.pl/CENNIK`);
                       break;
                     case "confirm":
                       fbMessage(sender, `Ok - co robimy dalej ?`);
