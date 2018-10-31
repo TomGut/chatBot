@@ -170,7 +170,7 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      fbMessage(sender, `Witam Cię` + sender + ` , jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
+                      fbMessage(sender, `Witam Cię ` + sender.From.Name + ` , jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
                       fbMessage(sender, `To do usłyszenia :) odwiedź nas jeszcze czasem.`);
@@ -203,7 +203,7 @@ app.post('/webhook', (req, res) => {
                       fbMessage(sender, `Książka jest w formacie Ebooka (PDF), wysyłamy ją emailowo - po szczegoły zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "drawing_get_date":
-                      fbMessage(sender, `W celu ustalenia dat kursu z rydunku izometrycznego, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `W celu ustalenia dat kursu z rysunku izometrycznego, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
                     case "hotWork_get_date":
                       fbMessage(sender, `W celu ustalenia dat kursu Hot Work, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
