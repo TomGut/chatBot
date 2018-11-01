@@ -181,7 +181,7 @@ app.post('/webhook', (req, res) => {
           const {text, attachments} = event.message;
           
           // calling out typingBubble for sender (bot) responding
-          typingBubble(sender);
+          let typingBubbleTimer = setTimeout(typingBubble(sender), 0)
             
           if (attachments) {
             // We received an attachment
@@ -193,7 +193,8 @@ app.post('/webhook', (req, res) => {
             // Let's run /message on the text to extract some entities
             
             //start sending answer after some time to enable bubble
-            setTimeout(witResponse, 5000);
+            clearTimeout(typingBubbleTimer);
+            setTimeout(witResponse, 3000);
               
             function witResponse(){
             
