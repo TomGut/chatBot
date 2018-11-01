@@ -149,25 +149,11 @@ app.post('/webhook', (req, res) => {
           // Yay! We got a new message!
           // We retrieve the Facebook user ID of the sender
           const sender = event.sender.id;
-          const recipientId = event.recipient.id;
+          const recipient = event.recipient.id;
 
           // We could retrieve the user's current session, or create one if it doesn't exist
           // This is useful if we want our bot to figure out the conversation history
           const sessionId = findOrCreateSession(sender);
-            
-         //typing bubble
-
-        const typingBubble = (recipientId) => {
-          const opts = {
-            form: {
-              recipient: {
-                id: recipientId,
-              },
-              sender_action: "typing_on"
-            },
-          };
-
-        };
 
           // We retrieve the message content
           const {text, attachments} = event.message;
@@ -184,6 +170,16 @@ app.post('/webhook', (req, res) => {
               // You can customize your response to these entities
                 
                 const intent = entities.intent[0].value;
+                
+                const typingBubble = (recipient) => {
+  const opts = {
+    form: {
+      recipient: {
+        id: recipient,
+      },
+      sender_action: "typing_on"
+    },
+  };};
                 
                 switch(intent) {
                     case "greeting":
