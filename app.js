@@ -171,18 +171,9 @@ app.post('/webhook', (req, res) => {
                 
                 const intent = entities.intent[0].value;
                 
-                const typingBubble = (recipient) => {
-  const opts = {
-    form: {
-      recipient: {
-        id: recipient,
-      },
-      sender_action: "typing_on"
-    },
-  };};
-                
                 switch(intent) {
                     case "greeting":
+                      fbMessage(sender, 'sender_action: "typing_on"');
                       fbMessage(sender, `Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
