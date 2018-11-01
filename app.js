@@ -149,7 +149,7 @@ app.post('/webhook', (req, res) => {
           // Yay! We got a new message!
           // We retrieve the Facebook user ID of the sender
           const sender = event.sender.id;
-          const srecipient = event.recipient.id;
+          const recipient = event.recipient.id;
             
             const typingBubble = (recipient) => {
   const opts = {
