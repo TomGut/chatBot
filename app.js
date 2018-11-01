@@ -213,6 +213,9 @@ app.post('/webhook', (req, res) => {
           // We retrieve the message content
           const {text, attachments} = event.message;
           
+         // get started button
+          getStartedButton(sender);
+            
           // calling out typingBubble for sender (bot) responding
           typingBubbleStart(sender)
        
@@ -234,7 +237,7 @@ app.post('/webhook', (req, res) => {
                 typingBubbleStop(sender);
                 
                 wit.message(text).then(({entities}) => {
-              // custom answers in responce for entity type
+                // custom answers in responce for entity type
                 
                 const intent = entities.intent[0].value;
                 
