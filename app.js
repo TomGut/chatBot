@@ -193,7 +193,7 @@ app.post('/webhook', (req, res) => {
             // Let's run /message on the text to extract some entities
             
             //start sending answer after some time to enable bubble
-            setTimeout(witResponse, 3000);
+            setTimeout(witResponse, 5000);
               
             function witResponse(){
             
