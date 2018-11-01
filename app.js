@@ -181,9 +181,8 @@ app.post('/webhook', (req, res) => {
           const {text, attachments} = event.message;
           
           // calling out typingBubble for sender (bot) responding
-          let typingBubbleTimer = setTimeout(typingBubble(sender), 0)
-          clearTimeout(typingBubbleTimer);
-            
+          typingBubble(sender)
+       
           if (attachments) {
             // We received an attachment
             // Let's reply with an automatic message
