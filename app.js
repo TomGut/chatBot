@@ -79,11 +79,33 @@ const fbMessage = (id, text) => {
 
 // typing bubble
 
-const typingBubble = (id, text) => {
+const typingBubbleStart = (id, text) => {
 
   const body = JSON.stringify({
       recipient: { id },
       "sender_action":"typing_on"
+  });
+
+  const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
+  return fetch('https://graph.facebook.com/me/messages?' + qs, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body,
+  })
+  .then(rsp => rsp.json())
+  .then(json => {
+    if (json.error && json.error.message) {
+      throw new Error(json.error.message);
+    }
+    return json;
+  });
+};
+
+const typingBubbleStop = (id, text) => {
+
+  const body = JSON.stringify({
+      recipient: { id },
+      "sender_action":"typing_off"
   });
 
   const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
@@ -181,7 +203,7 @@ app.post('/webhook', (req, res) => {
           const {text, attachments} = event.message;
           
           // calling out typingBubble for sender (bot) responding
-          typingBubble(sender)
+          typingBubbleStart(sender)
        
           if (attachments) {
             // We received an attachment
@@ -204,6 +226,7 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
+                      typingBubbleStop(sender);
                       fbMessage(sender, `Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
