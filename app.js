@@ -110,6 +110,7 @@ const wit = new Wit({
 
 // Starting our webserver and putting it all together
 const app = express();
+
 app.use(({method, url}, rsp, next) => {
   rsp.on('finish', () => {
     console.log(`${rsp.statusCode} ${method} ${url}`);
@@ -133,8 +134,6 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-
-
 // Message handler
 app.post('/webhook', (req, res) => {
   // Parse the Messenger payload
@@ -149,17 +148,17 @@ app.post('/webhook', (req, res) => {
           // Yay! We got a new message!
           // We retrieve the Facebook user ID of the sender
           const sender = event.sender.id;
-          const recipient = event.recipient.id;
             
-            const typingBubble = (recipient) => {
+            const typingBubble = (sender) => {
   const opts = {
     form: {
       recipient: {
-        id: recipient,
+        id: sender,
       },
       sender_action: "typing_on"
     },
-  };};
+  };
+};
 
           // We could retrieve the user's current session, or create one if it doesn't exist
           // This is useful if we want our bot to figure out the conversation history
@@ -167,7 +166,7 @@ app.post('/webhook', (req, res) => {
 
           // We retrieve the message content
           const {text, attachments} = event.message;
-
+            
           if (attachments) {
             // We received an attachment
             // Let's reply with an automatic message
@@ -183,7 +182,6 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      typingBubble;
                       fbMessage(sender, `Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
