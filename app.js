@@ -81,7 +81,7 @@ const fbMessage = (id, text) => {
 
 const typingBubble = (id, text) => {
 
-  var body = JSON.stringify({
+  const body = JSON.stringify({
       recipient: { id },
       "sender_action":"typing_on"
   });
@@ -179,8 +179,9 @@ app.post('/webhook', (req, res) => {
 
           // We retrieve the message content
           const {text, attachments} = event.message;
-            
-            typingBubble(sender);
+          
+          // calling out typingBubble for sender (bot) responding
+          typingBubble(sender);
             
           if (attachments) {
             // We received an attachment
@@ -190,7 +191,11 @@ app.post('/webhook', (req, res) => {
           } else if (text) {
             // We received a text message
             // Let's run /message on the text to extract some entities
-            wit.message(text).then(({entities}) => {
+              setTimeout(witResponse, 2000);
+              
+            function witResponse(){
+            
+                wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
                 
                 const intent = entities.intent[0].value;
@@ -262,7 +267,7 @@ app.post('/webhook', (req, res) => {
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
             })
-          }
+          };}
         } else {
           console.log('received event', JSON.stringify(event));
         }
