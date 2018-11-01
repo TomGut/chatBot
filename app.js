@@ -109,29 +109,7 @@ const typingBubbleStop = (id, text) => {
   });
 };
 
-//get started button
-const getStartedButton = (id, text) => {
 
-  const body = JSON.stringify({
-  "get_started":{
-     "payload":"text"
-   }
-  });
-
-  const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
-  return fetch('https://graph.facebook.com/me/messages?' + qs, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body,
-  })
-  .then(rsp => rsp.json())
-  .then(json => {
-    if (json.error && json.error.message) {
-      throw new Error(json.error.message);
-    }
-    return json;
-  });
-};
 
 // ----------------------------------------------------------------------------
 // Wit.ai bot specific code
@@ -199,8 +177,6 @@ app.post('/webhook', (req, res) => {
   const data = req.body;
 
   if (data.object === 'page') {
-      
-      getStartedButton(sender,`Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
       
     data.entry.forEach(entry => {
       entry.messaging.forEach(event => {
