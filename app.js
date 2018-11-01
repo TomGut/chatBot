@@ -218,7 +218,9 @@ app.post('/webhook', (req, res) => {
             setTimeout(witResponse, 3000);
               
             function witResponse(){
-            
+                
+                typingBubbleStop(sender);
+                
                 wit.message(text).then(({entities}) => {
               // You can customize your response to these entities
                 
@@ -226,7 +228,6 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      typingBubbleStop(sender);
                       fbMessage(sender, `Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
