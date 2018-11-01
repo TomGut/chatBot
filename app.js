@@ -114,7 +114,7 @@ const getStartedButton = (id, text) => {
 
   const body = JSON.stringify({
   "get_started":{
-     "payload":"Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?"
+     "payload":"text"
    }
   });
 
@@ -199,6 +199,9 @@ app.post('/webhook', (req, res) => {
   const data = req.body;
 
   if (data.object === 'page') {
+      
+      getStartedButton(sender,`Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
+      
     data.entry.forEach(entry => {
       entry.messaging.forEach(event => {
         if (event.message && !event.message.is_echo) {
@@ -213,9 +216,6 @@ app.post('/webhook', (req, res) => {
           // We retrieve the message content
           const {text, attachments} = event.message;
           
-         // get started button
-          getStartedButton(sender);
-            
           // calling out typingBubble for sender (bot) responding
           typingBubbleStart(sender)
        
@@ -237,7 +237,7 @@ app.post('/webhook', (req, res) => {
                 typingBubbleStop(sender);
                 
                 wit.message(text).then(({entities}) => {
-                // custom answers in responce for entity type
+              // custom answers in responce for entity type
                 
                 const intent = entities.intent[0].value;
                 
