@@ -180,6 +180,8 @@ app.post('/webhook', (req, res) => {
           // We retrieve the message content
           const {text, attachments} = event.message;
             
+            typingBubble(sender);
+            
           if (attachments) {
             // We received an attachment
             // Let's reply with an automatic message
@@ -195,7 +197,6 @@ app.post('/webhook', (req, res) => {
                 
                 switch(intent) {
                     case "greeting":
-                      typingBubble(sender, 'Odpowiadam');
                       fbMessage(sender, `Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?`);
                       break;
                     case "goodbye":
