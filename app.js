@@ -133,6 +133,8 @@ app.get('/webhook', (req, res) => {
   }
 });
 
+
+
 // Message handler
 app.post('/webhook', (req, res) => {
   // Parse the Messenger payload
@@ -147,10 +149,25 @@ app.post('/webhook', (req, res) => {
           // Yay! We got a new message!
           // We retrieve the Facebook user ID of the sender
           const sender = event.sender.id;
+          const recipientId = event.recipient.id;
 
           // We could retrieve the user's current session, or create one if it doesn't exist
           // This is useful if we want our bot to figure out the conversation history
           const sessionId = findOrCreateSession(sender);
+            
+         //typing bubble
+
+        const typingBubble = (recipientId) => {
+          const opts = {
+            form: {
+              recipient: {
+                id: recipientId,
+              },
+              sender_action: "typing_on"
+            },
+          };
+
+        };
 
           // We retrieve the message content
           const {text, attachments} = event.message;
@@ -228,11 +245,6 @@ app.post('/webhook', (req, res) => {
                       sendTextMessage(sender, "Przepraszam ale nie rozumiem - możesz to ująć inaczej ?")
                       break;
                 }
-                
-                
-               // For now, let's reply with another automatic message
-                  //fbMessage(sender, `We've received your message: ${text}.`);
-        
                 
               console.log(entities);
               
