@@ -4,19 +4,6 @@
 
 'use strict';
 
-// Messenger API integration example
-// We assume you have:
-// * a Wit.ai bot setup (https://wit.ai/docs/quickstart)
-// * a Messenger Platform setup (https://developers.facebook.com/docs/messenger-platform/quickstart)
-// You need to `npm install` the following dependencies: body-parser, express, node-fetch.
-//
-// 1. npm install body-parser express node-fetch
-// 2. Download and install ngrok from https://ngrok.com/download
-// 3. ./ngrok http 8445
-// 4. WIT_TOKEN=your_access_token FB_APP_SECRET=your_app_secret FB_PAGE_TOKEN=your_page_token node examples/messenger.js
-// 5. Subscribe your page to the Webhooks using verify_token and `https://<your_ngrok_io>/webhook` as callback URL.
-// 6. Talk to your bot on Messenger!
-
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const express = require('express');
@@ -78,7 +65,6 @@ const fbMessage = (id, text) => {
 };
 
 // typing bubble
-
 const typingBubbleStart = (id, text) => {
 
   const body = JSON.stringify({
@@ -106,6 +92,31 @@ const typingBubbleStop = (id, text) => {
   const body = JSON.stringify({
       recipient: { id },
       "sender_action":"typing_off"
+  });
+
+  const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
+  return fetch('https://graph.facebook.com/me/messages?' + qs, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body,
+  })
+  .then(rsp => rsp.json())
+  .then(json => {
+    if (json.error && json.error.message) {
+      throw new Error(json.error.message);
+    }
+    return json;
+  });
+};
+
+//get started button
+
+const getStartedButton = (id, text) => {
+
+  const body = JSON.stringify({
+  "get_started":{
+     "payload":"<GET_STARTED_PAYLOAD>"
+   }
   });
 
   const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
@@ -163,6 +174,7 @@ app.use(({method, url}, rsp, next) => {
   });
   next();
 });
+
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
 
 //Serwer setup
@@ -214,15 +226,16 @@ app.post('/webhook', (req, res) => {
             // We received a text message
             // Let's run /message on the text to extract some entities
             
-            //start sending answer after some time to enable bubble
+            //start sending answer after some time to enable typing bubble
             setTimeout(witResponse, 3000);
               
             function witResponse(){
                 
+                //stopping typing bubble when text message sent by bot after setTimeout
                 typingBubbleStop(sender);
                 
                 wit.message(text).then(({entities}) => {
-              // You can customize your response to these entities
+              // custom answers in responce for entity type
                 
                 const intent = entities.intent[0].value;
                 
@@ -264,7 +277,7 @@ app.post('/webhook', (req, res) => {
                       fbMessage(sender, `W celu ustalenia dat kursu z rysunku izometrycznego, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
                     case "hotWork_get_date":
-                      fbMessage(sender, `W celu ustalenia dat kursu Hot Work, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `W celu ustalenia dat rozpoczęcia kursu, proszę kontaktować się z nami pod numerem tel 516 141 949 lub mailowo kontakt@etechnika.com.pl`);
                       break;
                     case "offer":
                       fbMessage(sender, `W naszej ofercie znajdują się na przykład: książka o rysunku izometrycznym, szkolenie z rysunku izometrycznego, kurs Hot Work. Jeżeli interesuje Cię coś konkretnego to śmialo pytaj o datę/ cenę :). Dodatkowe informacje znajdziesz w cenniku na naszej stronie: https://www.etechnika.com.pl/CENNIK`);
