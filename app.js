@@ -110,12 +110,11 @@ const typingBubbleStop = (id, text) => {
 };
 
 //get started button
-
 const getStartedButton = (id, text) => {
 
   const body = JSON.stringify({
   "get_started":{
-     "payload":"<GET_STARTED_PAYLOAD>"
+     "payload":"Witam Cię, jestem chatbotem Etechniki i spróbuję odpowiedzieć na Twoje pytania jak najlepiej potrafię. Zatem - w czym mogę Ci pomóc ?"
    }
   });
 
