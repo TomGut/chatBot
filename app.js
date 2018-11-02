@@ -196,12 +196,15 @@ app.post('/webhook', (req, res) => {
           typingBubbleStart(sender)
        
           if (attachments) {
+            //start sending answer after some time to enable typing bubble
+            setTimeout(witGraphResponse, 3000);
             // We received an attachment
-            //stopping typing bubble when text message sent by bot after setTimeout
-            typingBubbleStop(sender);
-            // Let's reply with an automatic message
-            fbMessage(sender, ':) co robimy dalej ?')
-            .catch(console.error);
+            function witGraphResponse(){
+                //stopping typing bubble when text message sent by bot after setTimeout
+                typingBubbleStop(sender);
+                // Let's reply with an automatic message
+                fbMessage(sender, ':) co robimy dalej ?').catch(console.error);
+            }
           } else if (text) {
             // We received a text message
             // Let's run /message on the text to extract some entities
@@ -210,7 +213,6 @@ app.post('/webhook', (req, res) => {
             setTimeout(witResponse, 3000);
               
             function witResponse(){
-                
                 //stopping typing bubble when text message sent by bot after setTimeout
                 typingBubbleStop(sender);
                 
