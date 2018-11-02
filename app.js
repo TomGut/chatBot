@@ -198,7 +198,7 @@ app.post('/webhook', (req, res) => {
           if (attachments) {
             // We received an attachment
             // Let's reply with an automatic message
-            fbMessage(sender, 'Sorry I can only process text messages for now.')
+            fbMessage(sender, ':) co robimy dalej ?')
             .catch(console.error);
           } else if (text) {
             // We received a text message
