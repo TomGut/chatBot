@@ -19,18 +19,18 @@ let log = null;
 const PORT = process.env.PORT || 8445;
 
 // Wit.ai parameters
-const WIT_TOKEN = process.env.WIT_TOKEN || 'R5V774BP5QAS4R37T6NLS3H4SKUP4NOT';
+const WIT_TOKEN = process.env.WIT_TOKEN //|| 'R5V774BP5QAS4R37T6NLS3H4SKUP4NOT';
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || 'EAAZA0ufyLoHQBAHxv1jahcHGLnDu1AkI5szTHRZBUajcqZCBNn9V5nefFHDVZBC0ZCgUzAWUgsAr0kgiksDCu3AZAUUbFRPe7qvDWepfwJQh6dPOSLMg5UURQZC7VLTEPoYCiBLKMQR2gGaRGBEjnWppFFyvZAUyZCXJZCgYba57eWBjfqfkfcDP1Y';
+const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN //|| 'EAAZA0ufyLoHQBAPar59ZCb7Fsq7B4AGI3PmMV6ZCfZAeZC1PybepXBXDwfO6gj3dnXZANra7W6yRW5X7MFZChNbyRpZB3qZBvC9MfwX7icYqtGTQkWjAesAKhZAhKbuGH4SZBrWBUlnHmm2A6nSsgmkq1UTBTLuUJ8dk3nrQArqY4IdDpeVEWDflU7k';
 
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
 
-const FB_APP_SECRET = process.env.FB_APP_SECRET || '9643f232120c33746fc28b76463d41bc';
+const FB_APP_SECRET = process.env.FB_APP_SECRET //|| '9643f232120c33746fc28b76463d41bc';
 
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
 
-let FB_VERIFY_TOKEN = 'bot_page';
+let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN //'bot_page';
 
 crypto.randomBytes(8, (err, buff) => {
   if (err) throw err;
