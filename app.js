@@ -197,6 +197,8 @@ app.post('/webhook', (req, res) => {
        
           if (attachments) {
             // We received an attachment
+            //stopping typing bubble when text message sent by bot after setTimeout
+            typingBubbleStop(sender);
             // Let's reply with an automatic message
             fbMessage(sender, ':) co robimy dalej ?')
             .catch(console.error);
