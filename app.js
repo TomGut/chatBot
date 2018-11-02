@@ -19,18 +19,18 @@ let log = null;
 const PORT = process.env.PORT || 8445;
 
 // Wit.ai parameters
-const WIT_TOKEN = process.env.WIT_TOKEN //|| 'R5V774BP5QAS4R37T6NLS3H4SKUP4NOT';
+const WIT_TOKEN = process.env.WIT_TOKEN;
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN //|| 'EAAZA0ufyLoHQBAPar59ZCb7Fsq7B4AGI3PmMV6ZCfZAeZC1PybepXBXDwfO6gj3dnXZANra7W6yRW5X7MFZChNbyRpZB3qZBvC9MfwX7icYqtGTQkWjAesAKhZAhKbuGH4SZBrWBUlnHmm2A6nSsgmkq1UTBTLuUJ8dk3nrQArqY4IdDpeVEWDflU7k';
+const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN;
 
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
 
-const FB_APP_SECRET = process.env.FB_APP_SECRET //|| '9643f232120c33746fc28b76463d41bc';
+const FB_APP_SECRET = process.env.FB_APP_SECRET;
 
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
 
-let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN //'bot_page';
+let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
 
 crypto.randomBytes(8, (err, buff) => {
   if (err) throw err;
@@ -243,7 +243,7 @@ app.post('/webhook', (req, res) => {
                       fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF. Szczegóły o książce znajdziesz na naszej stronie pod tym linkiem: https://www.etechnika.com.pl/ksiazka-rysunek-izometryczny . Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "drawing_get_price":
-                      fbMessage(sender, `Kurs rysunku izometrycznego kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy). Kurs rysunku izometrycznego organizujemy stacjonarnie w Gdańsku lub Gdyni - zależnie od liczebności grupy. Kurs kończy się certyfikatami w 4 językach (PL, EN, DE i NO). Szerszy opis znajdziesz na naszej stronie, pod tym linkiem: https://www.etechnika.com.pl/Rysunek_Izometryczny_Stacjonarny_2 . Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `Kurs rysunku izometrycznego kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy). Kurs organizujemy w Gdańsku. Wydajemy certyfikaty w 4 językach (PL, EN, DE i NO). \n\ Szerszy opis znajdziesz na naszej stronie, pod tym linkiem: https://www.etechnika.com.pl/Rysunek_Izometryczny_Stacjonarny_2 .\n\ Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "hotWork_get_price":
                       fbMessage(sender, `Kurs Hot Work, elearnigowy (na komputerze kupującego), kosztuje 1000 PLN, trwa około 3 godzin i kończy się certyfikatem Norweskim. Więcej informacji znajdziesz na naszej stronie pod tym linkiem: https://www.etechnika.com.pl/Hot_Work_elearning`);
