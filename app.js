@@ -244,7 +244,7 @@ app.post('/webhook', (req, res) => {
                       fbMessage(sender, `Cieszę się z Tobą :)`);
                       break;
                     case "book_get_price":
-                      fbMessage(sender, `Książka kosztuje 50 pln '(płatność przelewem)' i jest wysyłana mailowo w formacie PDF. Szczegóły o książce znajdziesz na naszej stronie pod tym linkiem: https://www.etechnika.com.pl/ksiazka-rysunek-izometryczny . Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
+                      fbMessage(sender, `Książka kosztuje 50 pln (płatność przelewem) i jest wysyłana mailowo w formacie PDF. Szczegóły o książce znajdziesz na naszej stronie pod tym linkiem: https://www.etechnika.com.pl/ksiazka-rysunek-izometryczny . Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
                       break;
                     case "drawing_get_price":
                       fbMessage(sender, `Kurs rysunku izometrycznego kosztuje 400 PLN, trwa 1 dzień (4 do 5h zależnie od liczebności grupy). Kurs organizujemy w Gdańsku. Wydajemy certyfikaty w 4 językach (PL, EN, DE i NO). \n\ Szerszy opis znajdziesz na naszej stronie, pod tym linkiem: https://www.etechnika.com.pl/Rysunek_Izometryczny_Stacjonarny_2 .\n\ Po więcej informacji zapraszamy na mail kontakt@etechnika.com.pl`);
@@ -276,8 +276,10 @@ app.post('/webhook', (req, res) => {
                     case "swear":
                       fbMessage(sender, `Proszę nie używaj takich słów... powiedz lepiej w czym mogę Ci jeszcze pomóc ?`);
                       break;
-                        
-                    default: // Any other intensions go here..
+                     case null:
+                      fbMessage(sender, 'Przepraszam ale nie rozumiem - możesz to ująć inaczej ?`);
+                      break;   
+                     default: // Any other intensions go here..
                       sendTextMessage(sender, "Przepraszam ale nie rozumiem - możesz to ująć inaczej ?")
                       break;
                 }
