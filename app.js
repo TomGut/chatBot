@@ -19,18 +19,18 @@ let log = null;
 const PORT = process.env.PORT || 8445;
 
 // Wit.ai parameters
-const WIT_TOKEN = process.env.WIT_TOKEN || 'R5V774BP5QAS4R37T6NLS3H4SKUP4NOT';
+const WIT_TOKEN = process.env.WIT_TOKEN;
 
 // Messenger API parameters
-const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN || 'EAAZA0ufyLoHQBAJO1VEnSYlbvm5do6W7BdezAfv2nVBwQdSnhfdtxDS3ZAfSKFafR7JndkbVxRAodbZCw5XV3ZAjn7sVuiUq6hPLgYNKCcQ5zfdzAUBrQ3503kNSg8lHdc0sQC7vrE8qIcCckZBQWKDkMCNeP2yrbXjcVxRjAcsOjEvjKBeWk';
+const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN;
 
 if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
 
-const FB_APP_SECRET = process.env.FB_APP_SECRET || '9643f232120c33746fc28b76463d41bc';
+const FB_APP_SECRET = process.env.FB_APP_SECRET;
 
 if (!FB_APP_SECRET) { throw new Error('missing FB_APP_SECRET') }
 
-let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN || 'bot_page';
+let FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
 
 crypto.randomBytes(8, (err, buff) => {
   if (err) throw err;
@@ -210,9 +210,8 @@ app.post('/webhook', (req, res) => {
             // Let's run /message on the text to extract some entities
             
             //start sending answer after some time to enable typing bubble
-            setTimeout(witResponse, 3000);
+            //setTimeout(witResponse, 3000);
               
-            function witResponse(){
                 //stopping typing bubble when text message sent by bot after setTimeout
                 typingBubbleStop(sender);
                 
@@ -287,7 +286,7 @@ app.post('/webhook', (req, res) => {
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
             })
-          };}
+              ;}
         } else {
           console.log('received event', JSON.stringify(event));
         }
