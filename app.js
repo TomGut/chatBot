@@ -64,7 +64,8 @@ const fbMessage = (id, text) => {
   });
 };
 
-/*// typing bubble
+/*
+// typing bubble
 const typingBubbleStart = (id, text) => {
 
   const body = JSON.stringify({
@@ -108,8 +109,8 @@ const typingBubbleStop = (id, text) => {
     return json;
   });
 };
-*/
 
+*/
 
 // ----------------------------------------------------------------------------
 // Wit.ai bot specific code
@@ -197,20 +198,12 @@ app.post('/webhook', (req, res) => {
        
           if (attachments) {
             //start sending answer after some time to enable typing bubble
-            //setTimeout(witGraphResponse, 3000);
             // We received an attachment
-    
-                //stopping typing bubble when text message sent by bot after setTimeout
-                //typingBubbleStop(sender);
                 // Let's reply with an automatic message
                 fbMessage(sender, ':) co robimy dalej ?').catch(console.error);
-            }
           } else if (text) {
             // We received a text message
             // Let's run /message on the text to extract some entities
-              
-                //stopping typing bubble when text message sent by bot after setTimeout
-                //typingBubbleStop(sender);
                 
                 wit.message(text).then(({entities}) => {
               // custom answers in responce for entity type
@@ -284,7 +277,7 @@ app.post('/webhook', (req, res) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
             })
           ;}
-        else {
+        } else {
           console.log('received event', JSON.stringify(event));
         }
       });
