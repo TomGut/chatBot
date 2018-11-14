@@ -1,4 +1,1 @@
-Simple chatbot, fully automated
-
-Backend in node hosted on Heroku as a webhook.
-Wit.ai implemented as machine learning automated chat alike
+Simple Facebook Messenger chatbot, fully automated, you can talk with on: https://www.messenger.com/t/172073187059807
